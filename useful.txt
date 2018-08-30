@@ -1,0 +1,7 @@
+# Start OB on 16.04
+sudo systemctl start openbaton-nfvo.service
+sudo systemctl start openbaton-vnfm-generic.service
+
+# Stop OB on 16.04
+sudo systemctl stop openbaton-nfvo.service
+sudo systemctl stop openbaton-vnfm-generic.service
