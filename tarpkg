@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# with scripts on github
+tar -cvf vnfPackage.tar vnfd.json Metadata.yaml 
+
+# with scripts local
+#tar -cvf vnfPackage.tar vnfd.json Metadata.yaml ./vnf-scripts/*.sh

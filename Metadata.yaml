@@ -1,0 +1,21 @@
+name: vnfServerPKG
+description: Demo VNF package
+provider: TIBCO Pre-sales
+scripts-link: https://github.com/iainharfield/vnf-scripts.git
+nfvo_version: 5.2.1
+vim_types:
+    - openstack
+image:
+    upload: "true"
+    names:
+        - Ubuntu-16.04-sb10.3-4
+    link: "http://172.31.1.217/home/ubuntu/devstack/myimages/ubuntu-16.04-sb10.3-4.img"
+image-config:
+    name: Ubuntu-16.04-sb10.3-4
+    diskFormat: QCOW2
+    containerFormat: BARE
+    minCPU: 0
+    minDisk: 0
+    minRam: 0
+    isPublic: False
+

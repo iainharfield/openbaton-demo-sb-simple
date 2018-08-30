@@ -1,0 +1,28 @@
+{
+  "name": "demoNSD",
+  "vendor": "testVendor",
+  "version": "0.1",
+  "vnfd": [
+    {
+      "id": "b148d3d5-c718-4597-811c-0993d07ed64a"
+    }
+  ],
+  "vld": [
+    {
+      "name": "private"
+    }
+  ],
+    "vnf_dependency":[
+        {
+            "source" : {
+                "name": "vnfServerPKG"
+            },
+            "target":{
+                "name": "vnfServerPKG"
+            },
+            "parameters":[
+                "private_floatingIp"
+            ]
+        }
+    ]
+}

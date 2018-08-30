@@ -1,0 +1,15 @@
+#/bin/bash
+
+if [[ ! -z "${1// }" ]]; then
+	vnfPKGfile=$1
+fi
+
+pid="c3ffa313-5e91-4cce-a201-5286277ba107"
+usr="admin"
+pw="openbaton"
+ip="localhost"
+port="8080"
+
+
+openbaton $1 $2 $3 -pid $pid -u $usr -p $pw -ip $ip --nfvo-port $port --debug  
+# openbaton $1 $2 $3 -pid $pid -u $usr -p $pw -ip $ip --nfvo-port $port     -d --format json
