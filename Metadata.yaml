@@ -6,7 +6,7 @@ nfvo_version: 5.2.1
 vim_types:
     - openstack
 image:
-    upload: "true"
+    upload: "false"
     names:
         - Ubuntu-16.04-sb10.3-4
     link: "http://172.31.1.217/home/ubuntu/devstack/myimages/ubuntu-16.04-sb10.3-4.img"
