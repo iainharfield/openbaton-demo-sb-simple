@@ -24,3 +24,6 @@ dpkg --list | grep baton | tr -s " " | cut -f 2,3 -d " "
 
 # Get API key
 curl -v -u openbatonOSClient:secret -X POST http://172.31.13.56:8080/oauth/token -H "Accept:application/json" -d "username=admin&password=openbaton&grant_type=password"
+
+# Example API calls
+curl -X GET -v -H "Content-type: application/json" -H "Authorization: Bearer 1527ac0f-d998-44f6-8dfe-6c91a9520e5c" -H "project-id: ce5d626-fffd-4534-91c1-ce3292b2833a" -d '{}' "http://172.31.13.56:8080/api/v1/vnf-descriptors"
