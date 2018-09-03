@@ -19,3 +19,8 @@ dpkg --list | grep baton | tr -s " " | cut -f 2,3 -d " "
 ./ob vim create vim.json
 ./ob vnfpackage create vnfPackage.tar 
 ./ob key create key.json
+
+
+
+# Get API key
+curl -v -u openbatonOSClient:secret -X POST http://172.31.13.56:8080/oauth/token -H "Accept:application/json" -d "username=admin&password=openbaton&grant_type=password"
