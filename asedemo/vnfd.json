@@ -1,0 +1,142 @@
+{
+  "vendor": "TIBCO Pre-sales",
+  "version": "1.0",
+  "name": "vnfServerPKG",
+  "type": "pcrf",
+  "endpoint": "generic",
+  "vdu": [
+    {
+      "vm_image": [
+        "Ubuntu-16.04-sb10.3-4"
+      ],
+      "scale_in_out":3,
+      "vimInstanceName": [
+        "openstackVim"
+      ],
+      "vnfc": [
+        {
+          "connection_point": [
+            {
+	      "floatingIp":"random",
+              "virtual_link_reference": "private",
+	      "interfaceId":0
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "virtual_link": [
+    {
+      "name": "private"
+    }
+  ],
+  "configurations": {
+    "name": "config_name",
+    "configurationParameters": [
+      {
+        "confKey": "IAIN",
+        "value": "Hello Iain"
+      },
+      {
+        "confKey": "mqttBrokerIP",
+        "value": "iot.eclipse.org"
+      },
+      {
+        "confKey": "mqttBrokerPort",
+        "value": "1883"
+      },
+      {
+        "confKey": "mqttPublishDelay",
+        "value": "2"
+      }
+    ]
+  },
+  "lifecycle_event": [
+    {
+      "event": "CONFIGURE",
+      "lifecycle_events": [
+        "demo_configure.sh"
+      ]
+    },
+    {
+      "event": "INSTANTIATE",
+      "lifecycle_events": [
+        "demo_install.sh"
+      ]
+    },
+    {
+      "event": "START",
+      "lifecycle_events": [
+        "demo_start.sh"
+      ]
+    },
+    {
+      "event": "STOP",
+      "lifecycle_events": [
+        "demo_stop.sh"
+      ]
+    },
+    {
+      "event": "TERMINATE",
+      "lifecycle_events": [
+        "demo_terminate.sh"
+      ]
+    }
+  ],
+  "deployment_flavour": [
+    {
+      "flavour_key": "m1.small"
+    }
+  ],
+ "auto_scale_policy": [
+   {
+      "name": "scale-out",
+      "threshold": 100,
+      "comparisonOperator": ">=",
+      "period": 30,
+      "cooldown": 60,
+      "mode": "REACTIVE",
+      "type": "WEIGHTED",
+      "alarms": [
+        {
+          "metric": "system.cpu.load[percpu,avg1]",
+          "statistic": "avg",
+          "comparisonOperator": ">",
+          "threshold": 0.7,
+          "weight": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "SCALE_OUT",
+          "value": "1"
+        }
+      ]
+   },
+   {
+      "name": "scale-in",
+      "threshold": 100,
+      "comparisonOperator": "<=",
+      "period": 30,
+      "cooldown": 60,
+      "mode": "REACTIVE",
+      "type": "WEIGHTED",
+      "alarms": [
+        {
+          "metric": "system.cpu.load[percpu,avg1]",
+          "statistic": "avg",
+          "comparisonOperator": "<",
+          "threshold": 0.3,
+          "weight": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "SCALE_IN",
+          "value": "1"
+        }
+      ] 
+     }
+   ]
+}
