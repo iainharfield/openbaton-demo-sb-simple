@@ -1,7 +1,7 @@
 {  
    "name":"openstackVim",
-   "authUrl":"http://172.31.1.217/identity/v3",
-   "tenant":"bb405b22f9094005872e5cbe5ec195d3",
+   "authUrl":"http://192.168.1.125/identity/v3",
+   "tenant":"dc7d8254bc834859afd4b477174df1c9",
    "username":"demo",
    "password":"tibco123",
    "keyPair":"myKey",
