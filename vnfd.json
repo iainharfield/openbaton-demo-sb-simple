@@ -9,7 +9,7 @@
       "vm_image": [
         "Ubuntu-16.04-sb10.3-4"
       ],
-      "scale_in_out":1,
+      "scale_in_out":3,
       "vimInstanceName": [
         "openstackVim"
       ],
@@ -35,20 +35,20 @@
     "name": "config_name",
     "configurationParameters": [
       {
-        "confKey": "IAIN",
-        "value": "Hello Iain"
+        "confKey": "Description",
+        "value": "Streambase 10 - VNF demo."
       },
       {
-        "confKey": "mqttBrokerIP",
-        "value": "iot.eclipse.org"
+        "confKey": "mqttBroker",
+        "value": "homeBroker"
       },
       {
-        "confKey": "mqttBrokerPort",
-        "value": "1883"
+        "confKey": "mqttPubQueueName",
+        "value": "vnfStatus"
       },
       {
         "confKey": "mqttPublishDelay",
-        "value": "2"
+        "value": "3"
       }
     ]
   },
@@ -88,5 +88,55 @@
     {
       "flavour_key": "m1.medium"
     }
-  ]
+  ],
+ "auto_scale_policy": [
+   {
+      "name": "scale-out",
+      "threshold": 100,
+      "comparisonOperator": ">=",
+      "period": 30,
+      "cooldown": 120,
+      "mode": "REACTIVE",
+      "type": "WEIGHTED",
+      "alarms": [
+        {
+          "metric": "system.cpu.util[,user]",
+          "statistic": "avg",
+          "comparisonOperator": ">",
+          "threshold": 70,
+          "weight": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "SCALE_OUT",
+          "value": "1"
+        }
+      ]
+   },
+   {
+      "name": "scale-in",
+      "threshold": 100,
+      "comparisonOperator": "<=",
+      "period": 30,
+      "cooldown": 120,
+      "mode": "REACTIVE",
+      "type": "WEIGHTED",
+      "alarms": [
+        {
+          "metric": "system.cpu.util[,user]",
+          "statistic": "avg",
+          "comparisonOperator": "<",
+          "threshold": 40,
+          "weight": 1
+        }
+      ],
+      "actions": [
+        {
+          "type": "SCALE_IN",
+          "value": "1"
+        }
+      ] 
+     }
+   ]
 }
