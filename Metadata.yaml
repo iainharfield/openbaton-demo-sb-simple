@@ -2,7 +2,7 @@ name: vnfServerPKG
 description: Demo VNF package
 provider: TIBCO Pre-sales
 scripts-link: https://github.com/iainharfield/vnf-scripts.git
-nfvo_version: 5.2.1
+nfvo_version: 6.0.0
 vim_types:
     - openstack
 image:
